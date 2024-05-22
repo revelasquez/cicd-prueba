@@ -3,17 +3,17 @@ FROM nginx:alpine AS nginx
 WORKDIR /var/www/html
 
 COPY dockerfiles/nginx.dockerfile ./nginx/Dockerfile
-RUN docker build -t nginx-image ./nginx
+RUN docker build -t nginx ./nginx
 
 FROM nginx-image AS php
 
 WORKDIR /var/www/html
 
 COPY dockerfiles/php.dockerfile ./php/Dockerfile
-RUN docker build -t php-image ./php
+RUN docker build -t php ./php
 
 COPY dockerfiles/php.root.dockerfile ./php-root/Dockerfile
-RUN docker build -t php-root-image ./php-root
+RUN docker build -t php-root ./php-root
 
 COPY src/app .
 
