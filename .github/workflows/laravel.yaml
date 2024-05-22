@@ -30,7 +30,9 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           context: .
-          file: ./Dockerfile
+          file_nginx: ./dockerfiles/nginx.dockerfile
+          file_php: ./dockerfiles/php.dockerfile
+          file_root: ./dockerfiles/php.root.dockerfile
           platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ secrets.DOCKER_HUB_USERNAME }}/laravel:latest
